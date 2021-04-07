@@ -29,6 +29,13 @@ register(
 )
 
 register(
+    id='RexAltWalk-v0',
+    entry_point='rex_gym.envs.gym.alt_walk_env:RexAltWalkEnv',
+    max_episode_steps=2500,
+    reward_threshold=5.0,
+)
+
+register(
     id='RexTurn-v0',
     entry_point='rex_gym.envs.gym.turn_env:RexTurnEnv',
     max_episode_steps=1000,

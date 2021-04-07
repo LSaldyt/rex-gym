@@ -12,6 +12,7 @@ class GaitPlanner:
         self._last_time = 0.
         self._alpha = 0.
         self._s = False
+        # TODO: What does this do??
         if mode == "walk":
             self._offset = np.array([0., 0.5, 0.5, 0.])
             self.step_offset = 0.5

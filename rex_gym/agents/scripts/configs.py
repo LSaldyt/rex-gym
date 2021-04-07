@@ -88,6 +88,25 @@ def walk_ik():
     steps = 1e6  # 1M
     return locals()
 
+def alt_walk_ol():
+    """Configuration for Rex walk task based on open loop controller."""
+    locals().update(default())
+    # Environment
+    env = 'RexAltWalk-v0'
+    max_length = 2000
+    steps = 2e6  # 2M
+    return locals()
+
+
+def alt_walk_ik():
+    """Configuration for Rex walk task based on inverse kinematics controller."""
+    locals().update(default())
+    # Environment
+    env = 'RexAltWalk-v0'
+    max_length = 2000
+    steps = 1e6  # 1M
+    return locals()
+
 
 def turn_ol():
     """Configuration for Rex turn task."""
