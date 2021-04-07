@@ -115,7 +115,7 @@ class RexAltWalkEnv(rex_gym_env.RexGymEnv):
         self._cam_yaw = 0.0
         self._cam_pitch = -20
         self._signal_type = signal_type
-        self._gait_planner = GaitPlanner("alt_walk")
+        self._gait_planner = GaitPlanner("walk")
         self._kinematics = Kinematics()
         self.goal_reached = False
         self._stay_still = False
@@ -334,7 +334,9 @@ class RexAltWalkEnv(rex_gym_env.RexGymEnv):
         orientation = self.rex.GetBaseOrientation()
         rot_mat = self._pybullet_client.getMatrixFromQuaternion(orientation)
         local_up = rot_mat[6:]
-        return np.dot(np.asarray([0, 0, 1]), np.asarray(local_up)) < 0.85
+        # Dot product of z-unit vec and local upward unit vec
+        dot = np.dot(np.asarray([0, 0, 1]), np.asarray(local_up))
+        return dot < 0.5
 
     def _get_true_observation(self):
         """Get the true observations of this environment.
