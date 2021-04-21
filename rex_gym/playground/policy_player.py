@@ -25,7 +25,9 @@ class PolicyPlayer:
             self.signal_type = flag_mapper.DEFAULT_SIGNAL[self.env_id]
         policy_id = f"{self.env_id}_{self.signal_type}"
         policy_path = flag_mapper.ENV_ID_TO_POLICY[policy_id][0]
-        policy_dir = os.path.join(self.gym_dir_path, policy_path)
+        # policy_dir = os.path.join(self.gym_dir_path, policy_path)
+        policy_dir = os.path.join('rex-gym/', policy_path)
+        print(policy_dir)
         config = utility.load_config(policy_dir)
         policy_layers = config.policy_layers
         value_layers = config.value_layers
@@ -44,6 +46,7 @@ class PolicyPlayer:
             while True:
                 action = agent.get_action([observation])
                 observation, reward, done, _ = env.step(action[0])
+                print(observation)
                 time.sleep(0.002)
                 sum_reward += reward
                 logging.info(f"Reward={sum_reward}")

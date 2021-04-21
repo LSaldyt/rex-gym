@@ -189,6 +189,7 @@ def load_config(logdir):
     Configuration object.
   """
     config_path = logdir and os.path.join(logdir, 'config.yaml')
+    print(config_path)
     if not config_path or not tf.io.gfile.exists(config_path):
         message = ('Cannot resume an existing run since the logging directory does not '
                    'contain a configuration file.')
