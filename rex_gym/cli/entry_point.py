@@ -28,6 +28,7 @@ def policy(env, arg, flag, open_loop, inverse_kinematics, terrain, mark):
     # parse input args
     args, signal_type = _parse_input(arg, flag, terrain, mark, open_loop, inverse_kinematics)
     # run the Policy Player
+    print(env, args, signal_type)
     PolicyPlayer(env, args, signal_type).play()
 
 
