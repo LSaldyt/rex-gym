@@ -45,8 +45,12 @@ class PolicyPlayer:
             observation = env.reset()
             while True:
                 action = agent.get_action([observation])
+                print('Action', action)
+                motor = env._transform_action_to_motor_command(action[0])
+                print('Motor', motor)
                 observation, reward, done, _ = env.step(action[0])
-                print(observation)
+                print('Reward', reward)
+                print('Observation', observation)
                 time.sleep(0.002)
                 sum_reward += reward
                 logging.info(f"Reward={sum_reward}")

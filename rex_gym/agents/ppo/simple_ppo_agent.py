@@ -68,13 +68,11 @@ class SimplePPOPolicy(object):
         saver.restore(self.sess, checkpoint)
 
     def get_action(self, observation):
-        print('Observation', observation)
         normalized_observation = self._normalize_observ(observation)
         normalized_action, _ = self.sess.run(
             [self.mean_action, self.update_state],
             feed_dict={self.observation_placeholder: normalized_observation})
         action = self._denormalize_action(normalized_action)
-        print('Action', action)
         return action[:, 0]
 
     def _denormalize_action(self, action):
